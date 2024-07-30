@@ -1,0 +1,19 @@
+[package]
+name = "dyndexer-example"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+syndica-dyndexer-runtime = { path = "../syndica/public-crates/dyndexer-runtime", features = ["anchor"] }
+cbor4ii = "0.3.2"
+
+[dependencies.uuid]
+version = "1.9.1"
+features = [
+    "v4",                # Lets you generate random UUIDs
+    "fast-rng",          # Use a faster (but still sufficiently random) RNG
+    "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
+]
