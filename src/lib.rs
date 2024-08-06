@@ -7,22 +7,20 @@ const DRIFT_IDL: &[u8] = include_bytes!("drift.json");
 
 static IDL: OnceLock<AnchorIdl> = OnceLock::new();
 
-// This processor tracks any new user in Drift
-
+// This processor tracks any Drift v2 program events
 #[processor]
 fn process_events(event: Event) {
     let idl = IDL.get_or_init(|| AnchorIdl::deserialize(DRIFT_PROGRAM_PUBKEY, DRIFT_IDL));
     if let Event::Transaction(tx) = event {
         let events = idl.parse_events(&tx);
+        println!("got tx {} with {} events", tx.signature, events.len());
 
         for event in events {
-            if event.name == "SwapRecord" {
-                record_output(&Output::Object {
-                    uid: tx.signature.clone(),
-                    key: event.name,
-                    value: event.data,
-                });
-            }
+            record_output(&Output::Object {
+                uid: tx.signature.clone(),
+                key: event.name,
+                value: event.fields,
+            });
         }
     }
 }

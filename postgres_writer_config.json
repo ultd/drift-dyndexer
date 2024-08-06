@@ -1,0 +1,748 @@
+{
+  "enabled": true,
+  "db_connection_str": "postgresql://drift_events:drift_events@localhost:5432/drift_events",
+  "keys": {
+    "CurveRecord": {
+      "table_name": "CurveRecord",
+      "columns": {
+        "adjustmentCost": {
+          "type": "text",
+          "required": true
+        },
+        "baseAssetAmountLong": {
+          "type": "text",
+          "required": true
+        },
+        "baseAssetAmountShort": {
+          "type": "text",
+          "required": true
+        },
+        "baseAssetAmountWithAmm": {
+          "type": "text",
+          "required": true
+        },
+        "baseAssetReserveAfter": {
+          "type": "text",
+          "required": true
+        },
+        "baseAssetReserveBefore": {
+          "type": "text",
+          "required": true
+        },
+        "fillRecord": {
+          "type": "text",
+          "required": true
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "numberOfUsers": {
+          "type": "bigint",
+          "required": true
+        },
+        "oraclePrice": {
+          "type": "bigint",
+          "required": true
+        },
+        "pegMultiplierAfter": {
+          "type": "text",
+          "required": true
+        },
+        "pegMultiplierBefore": {
+          "type": "text",
+          "required": true
+        },
+        "quoteAssetReserveAfter": {
+          "type": "text",
+          "required": true
+        },
+        "quoteAssetReserveBefore": {
+          "type": "text",
+          "required": true
+        },
+        "recordId": {
+          "type": "text",
+          "required": true
+        },
+        "sqrtKAfter": {
+          "type": "text",
+          "required": true
+        },
+        "sqrtKBefore": {
+          "type": "text",
+          "required": true
+        },
+        "totalFee": {
+          "type": "text",
+          "required": true
+        },
+        "totalFeeMinusDistributions": {
+          "type": "text",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        }
+      }
+    },
+    "DepositRecord": {
+      "table_name": "DepositRecord",
+      "columns": {
+        "amount": {
+          "type": "text",
+          "required": true
+        },
+        "depositRecordId": {
+          "type": "text",
+          "required": true
+        },
+        "direction": {
+          "type": "jsonb",
+          "required": true
+        },
+        "explanation": {
+          "type": "jsonb",
+          "required": true
+        },
+        "marketCumulativeBorrowInterest": {
+          "type": "text",
+          "required": true
+        },
+        "marketCumulativeDepositInterest": {
+          "type": "text",
+          "required": true
+        },
+        "marketDepositBalance": {
+          "type": "text",
+          "required": true
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "marketWithdrawBalance": {
+          "type": "text",
+          "required": true
+        },
+        "oraclePrice": {
+          "type": "bigint",
+          "required": true
+        },
+        "totalDepositsAfter": {
+          "type": "text",
+          "required": true
+        },
+        "totalWithdrawsAfter": {
+          "type": "text",
+          "required": true
+        },
+        "transferUser": {
+          "type": "text",
+          "required": false
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "user": {
+          "type": "text",
+          "required": true
+        },
+        "userAuthority": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "FundingPaymentRecord": {
+      "table_name": "FundingPaymentRecord",
+      "columns": {
+        "ammCumulativeFundingLong": {
+          "type": "text",
+          "required": true
+        },
+        "ammCumulativeFundingShort": {
+          "type": "text",
+          "required": true
+        },
+        "baseAssetAmount": {
+          "type": "bigint",
+          "required": true
+        },
+        "fundingPayment": {
+          "type": "bigint",
+          "required": true
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "user": {
+          "type": "text",
+          "required": true
+        },
+        "userAuthority": {
+          "type": "text",
+          "required": true
+        },
+        "userLastCumulativeFunding": {
+          "type": "bigint",
+          "required": true
+        }
+      }
+    },
+    "FundingRateRecord": {
+      "table_name": "FundingRateRecord",
+      "columns": {
+        "baseAssetAmountWithAmm": {
+          "type": "text",
+          "required": true
+        },
+        "baseAssetAmountWithUnsettledLp": {
+          "type": "text",
+          "required": true
+        },
+        "cumulativeFundingRateLong": {
+          "type": "text",
+          "required": true
+        },
+        "cumulativeFundingRateShort": {
+          "type": "text",
+          "required": true
+        },
+        "fundingRate": {
+          "type": "bigint",
+          "required": true
+        },
+        "fundingRateLong": {
+          "type": "text",
+          "required": true
+        },
+        "fundingRateShort": {
+          "type": "text",
+          "required": true
+        },
+        "markPriceTwap": {
+          "type": "text",
+          "required": true
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "oraclePriceTwap": {
+          "type": "bigint",
+          "required": true
+        },
+        "periodRevenue": {
+          "type": "bigint",
+          "required": true
+        },
+        "recordId": {
+          "type": "text",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        }
+      }
+    },
+    "InsuranceFundRecord": {
+      "table_name": "InsuranceFundRecord",
+      "columns": {
+        "amount": {
+          "type": "bigint",
+          "required": true
+        },
+        "insuranceVaultAmountBefore": {
+          "type": "text",
+          "required": true
+        },
+        "perpMarketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "spotMarketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "totalIfFactor": {
+          "type": "bigint",
+          "required": true
+        },
+        "totalIfSharesAfter": {
+          "type": "text",
+          "required": true
+        },
+        "totalIfSharesBefore": {
+          "type": "text",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "userIfFactor": {
+          "type": "bigint",
+          "required": true
+        },
+        "vaultAmountBefore": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "InsuranceFundStakeRecord": {
+      "table_name": "InsuranceFundStakeRecord",
+      "columns": {
+        "action": {
+          "type": "jsonb",
+          "required": true
+        },
+        "amount": {
+          "type": "text",
+          "required": true
+        },
+        "ifSharesAfter": {
+          "type": "text",
+          "required": true
+        },
+        "ifSharesBefore": {
+          "type": "text",
+          "required": true
+        },
+        "insuranceVaultAmountBefore": {
+          "type": "text",
+          "required": true
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "totalIfSharesAfter": {
+          "type": "text",
+          "required": true
+        },
+        "totalIfSharesBefore": {
+          "type": "text",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "userAuthority": {
+          "type": "text",
+          "required": true
+        },
+        "userIfSharesAfter": {
+          "type": "text",
+          "required": true
+        },
+        "userIfSharesBefore": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "LPRecord": {
+      "table_name": "LPRecord",
+      "columns": {
+        "action": {
+          "type": "jsonb",
+          "required": true
+        },
+        "deltaBaseAssetAmount": {
+          "type": "bigint",
+          "required": true
+        },
+        "deltaQuoteAssetAmount": {
+          "type": "bigint",
+          "required": true
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "nShares": {
+          "type": "text",
+          "required": true
+        },
+        "pnl": {
+          "type": "bigint",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "user": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "LiquidationRecord": {
+      "table_name": "LiquidationRecord",
+      "columns": {
+        "bankrupt": {
+          "type": "boolean",
+          "required": true
+        },
+        "canceledOrderIds": {
+          "type": "jsonb",
+          "required": true
+        },
+        "liquidateBorrowForPerpPnl": {
+          "type": "jsonb",
+          "required": true
+        },
+        "liquidatePerp": {
+          "type": "jsonb",
+          "required": true
+        },
+        "liquidatePerpPnlForDeposit": {
+          "type": "jsonb",
+          "required": true
+        },
+        "liquidateSpot": {
+          "type": "jsonb",
+          "required": true
+        },
+        "liquidationId": {
+          "type": "int",
+          "required": true
+        },
+        "liquidationType": {
+          "type": "jsonb",
+          "required": true
+        },
+        "liquidator": {
+          "type": "text",
+          "required": true
+        },
+        "marginFreed": {
+          "type": "text",
+          "required": true
+        },
+        "marginRequirement": {
+          "type": "text",
+          "required": true
+        },
+        "perpBankruptcy": {
+          "type": "jsonb",
+          "required": true
+        },
+        "spotBankruptcy": {
+          "type": "jsonb",
+          "required": true
+        },
+        "totalCollateral": {
+          "type": "text",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "user": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "NewUserRecord": {
+      "table_name": "NewUserRecord",
+      "columns": {
+        "name": {
+          "type": "jsonb",
+          "required": true
+        },
+        "referrer": {
+          "type": "text",
+          "required": true
+        },
+        "subAccountId": {
+          "type": "int",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "user": {
+          "type": "text",
+          "required": true
+        },
+        "userAuthority": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "OrderActionRecord": {
+      "table_name": "OrderActionRecord",
+      "columns": {
+        "action": {
+          "type": "jsonb",
+          "required": true
+        },
+        "actionExplanation": {
+          "type": "jsonb",
+          "required": true
+        },
+        "baseAssetAmountFilled": {
+          "type": "text",
+          "required": false
+        },
+        "fillRecordId": {
+          "type": "text",
+          "required": false
+        },
+        "filler": {
+          "type": "text",
+          "required": false
+        },
+        "fillerReward": {
+          "type": "text",
+          "required": false
+        },
+        "maker": {
+          "type": "text",
+          "required": false
+        },
+        "makerFee": {
+          "type": "bigint",
+          "required": false
+        },
+        "makerOrderBaseAssetAmount": {
+          "type": "text",
+          "required": false
+        },
+        "makerOrderCumulativeBaseAssetAmountFilled": {
+          "type": "text",
+          "required": false
+        },
+        "makerOrderCumulativeQuoteAssetAmountFilled": {
+          "type": "text",
+          "required": false
+        },
+        "makerOrderDirection": {
+          "type": "jsonb",
+          "required": false
+        },
+        "makerOrderId": {
+          "type": "bigint",
+          "required": false
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "marketType": {
+          "type": "jsonb",
+          "required": true
+        },
+        "oraclePrice": {
+          "type": "bigint",
+          "required": true
+        },
+        "quoteAssetAmountFilled": {
+          "type": "text",
+          "required": false
+        },
+        "quoteAssetAmountSurplus": {
+          "type": "bigint",
+          "required": false
+        },
+        "referrerReward": {
+          "type": "bigint",
+          "required": false
+        },
+        "spotFulfillmentMethodFee": {
+          "type": "text",
+          "required": false
+        },
+        "taker": {
+          "type": "text",
+          "required": false
+        },
+        "takerFee": {
+          "type": "text",
+          "required": false
+        },
+        "takerOrderBaseAssetAmount": {
+          "type": "text",
+          "required": false
+        },
+        "takerOrderCumulativeBaseAssetAmountFilled": {
+          "type": "text",
+          "required": false
+        },
+        "takerOrderCumulativeQuoteAssetAmountFilled": {
+          "type": "text",
+          "required": false
+        },
+        "takerOrderDirection": {
+          "type": "jsonb",
+          "required": false
+        },
+        "takerOrderId": {
+          "type": "bigint",
+          "required": false
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        }
+      }
+    },
+    "OrderRecord": {
+      "table_name": "OrderRecord",
+      "columns": {
+        "order": {
+          "type": "jsonb",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "user": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "SettlePnlRecord": {
+      "table_name": "SettlePnlRecord",
+      "columns": {
+        "baseAssetAmount": {
+          "type": "bigint",
+          "required": true
+        },
+        "explanation": {
+          "type": "jsonb",
+          "required": true
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "pnl": {
+          "type": "text",
+          "required": true
+        },
+        "quoteAssetAmountAfter": {
+          "type": "bigint",
+          "required": true
+        },
+        "quoteEntryAmount": {
+          "type": "bigint",
+          "required": true
+        },
+        "settlePrice": {
+          "type": "bigint",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "user": {
+          "type": "text",
+          "required": true
+        }
+      }
+    },
+    "SpotInterestRecord": {
+      "table_name": "SpotInterestRecord",
+      "columns": {
+        "borrowBalance": {
+          "type": "text",
+          "required": true
+        },
+        "cumulativeBorrowInterest": {
+          "type": "text",
+          "required": true
+        },
+        "cumulativeDepositInterest": {
+          "type": "text",
+          "required": true
+        },
+        "depositBalance": {
+          "type": "text",
+          "required": true
+        },
+        "marketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "maxBorrowRate": {
+          "type": "bigint",
+          "required": true
+        },
+        "optimalBorrowRate": {
+          "type": "bigint",
+          "required": true
+        },
+        "optimalUtilization": {
+          "type": "bigint",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        }
+      }
+    },
+    "SwapRecord": {
+      "table_name": "SwapRecord",
+      "columns": {
+        "amountIn": {
+          "type": "text",
+          "required": true
+        },
+        "amountOut": {
+          "type": "text",
+          "required": true
+        },
+        "fee": {
+          "type": "text",
+          "required": true
+        },
+        "inMarketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "inOraclePrice": {
+          "type": "bigint",
+          "required": true
+        },
+        "outMarketIndex": {
+          "type": "int",
+          "required": true
+        },
+        "outOraclePrice": {
+          "type": "bigint",
+          "required": true
+        },
+        "ts": {
+          "type": "bigint",
+          "required": true
+        },
+        "user": {
+          "type": "text",
+          "required": true
+        }
+      }
+    }
+  }
+}
